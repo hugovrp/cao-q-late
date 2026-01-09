@@ -17,13 +17,16 @@ import java.sql.SQLException;
 public class ConnectionFactory {
 	
 	/** URL de conexão com o banco de dados PostgreSQL */
-	private static final String URL = "jdbc:postgresql://localhost:2222/petshop-caoqlate";
+	private static final String URL = System.getenv("DB_URL") != null 
+			? System.getenv("DB_URL") : "jdbc:postgresql://localhost:5432/petshop-caoqlate";
 	
 	/** Nome de usuário para autenticação no banco de dados */
-	private static final String USER = "postgres";
+	private static final String USER = System.getenv("DB_USER") != null 
+			? System.getenv("DB_USER") : "postgres";
 	
 	/** Senha para autenticação no banco de dados */
-	private static final String PASSWORD = "postgre";
+	private static final String PASSWORD = System.getenv("DB_PASS") != null
+			? System.getenv("DB_PASS") : "postgre";
 	
 	/**
 	 * Obtém uma nova conexão com o banco de dados PostgreSQL.

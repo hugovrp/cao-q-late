@@ -1,0 +1,55 @@
+services:
+    db:
+        image: hugovrp/petshop-db:latest
+        pull_policy: always
+        container_name: postgres_db
+        networks:
+            - petshop-network
+        environment:
+            POSTGRES_DB: petshop-caoqlate
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: postgre
+        volumes:
+            - pgdata:/var/lib/postgresql/data
+        healthcheck:
+            test: ["CMD-SHELL", "pg_isready -U postgres -d petshop-caoqlate"]
+            interval: 5s
+            timeout: 5s
+            retries: 5
+
+    app:
+        image: hugovrp/petshop-app:latest
+        container_name: java_webapp
+        ports:
+            - "8080:8080"
+        networks:
+            - petshop-network
+        environment:
+            - DB_URL=jdbc:postgresql://db:5432/petshop-caoqlate
+            - DB_USER=postgres
+            - DB_PASS=postgre
+        depends_on:
+            db:
+                condition: service_healthy
+
+    pgadmin:
+        image: dpage/pgadmin4
+        container_name: pgadmin_web
+        ports:
+            - "5050:80"
+        networks:
+            - petshop-network
+        environment:
+            PGADMIN_DEFAULT_EMAIL: admin@admin.com
+            PGADMIN_DEFAULT_PASSWORD: admin
+            PGADMIN_CONFIG_SERVER_MODE: 'False'
+        depends_on:
+            db:
+                condition: service_healthy
+
+networks:
+    petshop-network:
+        driver: bridge
+
+volumes:
+    pgdata:

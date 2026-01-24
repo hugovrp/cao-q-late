@@ -1,1 +1,604 @@
 @charset "UTF-8";
+
+/* --- buttons --- */
+.search-btn {
+    padding: 12px 30px;
+    background: #2A9D8F;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.search-btn:hover {
+    background: #264653;
+}
+
+.submit-btn {
+    flex: 1;
+    background: linear-gradient(135deg, #2A9D8F, #1a7d71);
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 1.05em;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(42, 157, 143, 0.3);
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(42, 157, 143, 0.4);
+}
+
+.submit-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.cancel-btn {
+    padding: 15px 30px;
+    background: #f4f4f4;
+    color: #264653;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 1.05em;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.cancel-btn:hover {
+    background: #264653;
+    color: white;
+    border-color: #264653;
+}
+
+/* --- dog_home content --- */
+.actions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.action-card {
+    background: white;
+    padding: 35px 25px;
+    border-radius: 15px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+}
+
+.action-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.action-icon {
+    width: 75px;
+    height: 75px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.3em;
+    margin-bottom: 18px;
+}
+
+.action-card:nth-child(1) .action-icon {
+    background: linear-gradient(135deg, #2A9D8F, #1a7d71);
+}
+
+.action-card:nth-child(2) .action-icon {
+    background: linear-gradient(135deg, #E9C46A, #d4a849);
+}
+
+.action-card:nth-child(3) .action-icon {
+    background: linear-gradient(135deg, #264653, #1a3540);
+}
+
+.action-card h3 {
+    font-family: 'Poppins', sans-serif;
+    color: #264653;
+    font-size: 1.3em;
+    margin-bottom: 10px;
+}
+
+.action-card p {
+    color: #666;
+    font-size: 0.9em;
+    line-height: 1.5;
+}
+
+/* --- dog_register content --- */
+.form-container {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    max-width: 700px;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 0.95em;
+}
+
+.form-group label .required {
+    color: #e74c3c;
+    margin-left: 3px;
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+.input-wrapper input {
+    width: 100%;
+    padding: 14px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 1em;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.3s ease;
+    background: #F4F4F4;
+}
+
+.input-wrapper input:focus {
+    outline: none;
+    border-color: #2A9D8F;
+    background: white;
+}
+
+.input-wrapper input.error {
+    border-color: #e74c3c;
+    background: #fff5f5;
+}
+
+.input-wrapper input.success {
+    border-color: #2A9D8F;
+}
+
+.radio-group {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.radio-option {
+    flex: 1;
+    min-width: 150px;
+}
+
+.radio-option input[type="radio"] {
+    display: none;
+}
+
+.radio-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 20px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: #F4F4F4;
+    font-weight: 500;
+}
+
+.radio-option input[type="radio"]:checked + .radio-label {
+    border-color: #2A9D8F;
+    background: #2A9D8F;
+    color: white;
+}
+
+.radio-label:hover {
+    border-color: #2A9D8F;
+}
+
+.error-message {
+    color: #e74c3c;
+    font-size: 0.85em;
+    margin-top: 6px;
+    display: none;
+    align-items: center;
+    gap: 5px;
+}
+
+.error-message.show {
+    display: flex;
+}
+
+.alert {
+    padding: 15px 20px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    display: none;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.95em;
+}
+
+.alert.show {
+    display: flex;
+}
+
+.alert.error {
+    background: #fff5f5;
+    border: 2px solid #e74c3c;
+    color: #e74c3c;
+}
+
+.alert.success {
+    background: #f0fdf4;
+    border: 2px solid #2A9D8F;
+    color: #2A9D8F;
+}
+
+.form-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+/* --- dog_list content --- */
+.search-section {
+    background: white;
+    padding: 25px 30px;
+    border-radius: 15px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.search-section h3 {
+    font-family: 'Poppins', sans-serif;
+    color: #264653;
+    margin-bottom: 15px;
+}
+
+.search-form {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.form-group {
+    flex: 1;
+}
+
+.form-group label {
+    display: block;
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 0.9em;
+}
+
+.search-input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 1em;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.3s ease;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #2A9D8F;
+}
+
+.table-container {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+.table-header {
+    padding: 20px 30px;
+    border-bottom: 2px solid #f0f0f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.table-header h3 {
+    font-family: 'Poppins', sans-serif;
+    color: #264653;
+    font-size: 1.3em;
+}
+
+.dog-count {
+    background: #2A9D8F;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9em;
+    font-weight: 600;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background: #f8f9fa;
+}
+
+th {
+    padding: 15px 20px;
+    text-align: left;
+    font-weight: 600;
+    color: #264653;
+    font-size: 0.9em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+td {
+    padding: 18px 20px;
+    border-bottom: 1px solid #f0f0f0;
+    color: #333;
+}
+
+tbody tr {
+    transition: all 0.3s ease;
+}
+
+tbody tr:hover {
+    background: #f8f9fa;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.size-badge {
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.85em;
+    font-weight: 600;
+}
+
+.size-small {
+    background: #e3f2fd;
+    color: #1976d2;
+}
+
+.size-medium {
+    background: #fff3e0;
+    color: #f57c00;
+}
+
+.size-large {
+    background: #f3e5f5;
+    color: #7b1fa2;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: #999;
+}
+
+.empty-state-icon {
+    font-size: 4em;
+    margin-bottom: 20px;
+}
+
+.empty-state h3 {
+    font-family: 'Poppins', sans-serif;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.empty-state p {
+    margin-bottom: 20px;
+}
+
+/* --- dog_provision_list content --- */
+.dog-info-card {
+    background: white;
+    padding: 25px 30px;
+    border-radius: 15px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.dog-avatar {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #2A9D8F, #1a7d71);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5em;
+}
+
+.dog-details h3 {
+    font-family: 'Poppins', sans-serif;
+    color: #264653;
+    font-size: 1.5em;
+    margin-bottom: 8px;
+}
+
+.dog-meta {
+    display: flex;
+    gap: 20px;
+    color: #666;
+    font-size: 0.95em;
+}
+
+.dog-meta span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.history-container {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+.history-header {
+    padding: 20px 30px;
+    border-bottom: 2px solid #f0f0f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.history-header h3 {
+    font-family: 'Poppins', sans-serif;
+    color: #264653;
+    font-size: 1.3em;
+}
+
+.provision-count {
+    background: #2A9D8F;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9em;
+    font-weight: 600;
+}
+
+.provision-list {
+    padding: 20px 30px;
+}
+
+.provision-item {
+    border: 2px solid #f0f0f0;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+}
+
+.provision-item:hover {
+    border-color: #2A9D8F;
+    box-shadow: 0 2px 10px rgba(42, 157, 143, 0.1);
+}
+
+.provision-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.provision-date {
+    font-weight: 600;
+    color: #264653;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.provision-value {
+    font-size: 1.3em;
+    font-weight: 700;
+    color: #2A9D8F;
+}
+
+.services-list {
+    margin-bottom: 15px;
+}
+
+.services-list h4 {
+    color: #666;
+    font-size: 0.9em;
+    margin-bottom: 10px;
+}
+
+.service-tag {
+    display: inline-block;
+    background: #f8f9fa;
+    padding: 6px 12px;
+    border-radius: 6px;
+    margin: 4px;
+    font-size: 0.9em;
+    color: #333;
+}
+
+.discount-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: #fff3e0;
+    color: #f57c00;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.85em;
+    font-weight: 600;
+}
+
+/* --- responsive --- */
+@media (max-width: 768px) {
+    .actions-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .form-container {
+        padding: 25px;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+    
+    .table-container {
+        overflow-x: auto;
+    }
+
+    table {
+        min-width: 600px;
+    }
+    
+    .dog-info-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .dog-meta {
+        flex-direction: column;
+        gap: 10px;
+    }
+}

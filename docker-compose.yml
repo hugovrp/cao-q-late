@@ -19,6 +19,7 @@ services:
 
     app:
         image: hugovrp/petshop-app:latest
+        pull_policy: always
         container_name: java_webapp
         ports:
             - "8080:8080"

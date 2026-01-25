@@ -44,14 +44,7 @@
 	            <a href="service_home.jsp" class="back-btn">← Voltar</a>
 	        </div>
 	
-	        <div class="form-container">
-	            <div class="info-box">
-	                <span class="icon">💡</span>
-	                <div>
-	                    <strong>Dica:</strong> Você pode encontrar o ID do serviço na lista de serviços da página anterior.
-	                </div>
-	            </div>
-	
+	        <div class="form-container">	
 	            <div id="alertBox" class="alert"></div>
 	
 	            <form id="searchForm" action="controller" method="post" novalidate>

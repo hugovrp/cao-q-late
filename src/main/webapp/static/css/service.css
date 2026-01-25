@@ -363,24 +363,6 @@ tbody tr:last-child td {
     margin-top: 30px;
 }
 
-/* --- service_search content --- */
-.info-box {
-    background: #e3f2fd;
-    border-left: 4px solid #2196f3;
-    padding: 15px 20px;
-    border-radius: 8px;
-    margin-bottom: 30px;
-    color: #1565c0;
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-}
-
-.info-box .icon {
-    font-size: 1.5em;
-    flex-shrink: 0;
-}
-
 /* --- responsive --- */
 @media (max-width: 768px) {	
     .actions-grid {

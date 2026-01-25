@@ -44,11 +44,6 @@
 	            <a href="index.jsp" class="back-btn">← Voltar ao Dashboard</a>
 	        </div>
 	
-	        <div id="alertBox" class="alert" 
-			     data-success="${not empty param.success}" 
-			     data-error="${not empty param.error}">
-			</div>
-	
 	        <div class="actions-grid">	        
 	            <div class="action-card">
 	                <form action="controller" method="post">
@@ -73,7 +68,5 @@
 	            </div>
 	        </div>
 	    </div>
-	
-		<script type="module" src="./static/js/scheduling_home.js"></script>
 	</body>
 </html>

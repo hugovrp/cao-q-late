@@ -29,7 +29,7 @@
 ## 🚀 Tecnologias
 
 ### Backend
-- **Java 24** - Linguagem principal
+- **Java 21** - Linguagem principal
 - **Jakarta Servlet/JSP** - Framework web
 - **JSTL** - Template engine
 - **Maven** - Gerenciamento de dependências
@@ -45,6 +45,9 @@
 - **HTML5 + CSS3** - Interface moderna e responsiva
 - **JavaScript (ES6+)** - Validações e interatividade
 - **SHA-256** - Hash de senhas no frontend
+
+- ### DevOps
+- **Docker e Docker Compose** - Imagens personalizadas e orquestração via Docker Compose.
 
 ---
 

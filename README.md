@@ -46,7 +46,7 @@
 - **JavaScript (ES6+)** - Validações e interatividade
 - **SHA-256** - Hash de senhas no frontend
 
-- ### DevOps
+### DevOps
 - **Docker e Docker Compose** - Imagens personalizadas e orquestração via Docker Compose.
 
 ---

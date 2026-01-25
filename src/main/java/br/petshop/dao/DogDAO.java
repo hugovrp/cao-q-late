@@ -226,4 +226,38 @@ public class DogDAO {
 		
 		return null;
 	}
+	
+	/**
+	 * Lista todos os cães cadastrados no sistema.
+	 * 
+	 * @return List<Dog> lista contendo todos os cães cadastrados, lista vazia se nenhum encontrado
+	 */
+	public List<Dog> dogs_list() {
+		List<Dog> dogs = new ArrayList<Dog>();
+		String cmd_sql = "select * from dog";
+		
+		try(PreparedStatement statement = connection.prepareStatement(cmd_sql)) {
+			ResultSet result = statement.executeQuery();
+			while(result.next()) {
+				Dog dog = new Dog();
+				dog.setId(result.getInt("id"));
+				dog.setName(result.getString("name"));
+				dog.setBreed(result.getString("breed"));
+				
+				String str_size = result.getString("size");
+				if (str_size != null) {
+					dog.setSize(DogSize.valueOf(str_size));
+				}
+				
+				Client owner = new Client();
+				owner.setId(result.getInt("owner_id"));
+				dog.setOwner(owner);
+				
+				dogs.add(dog);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return dogs;
+	}
 }

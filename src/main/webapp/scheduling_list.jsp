@@ -109,8 +109,7 @@
 	                                                    <input type="hidden" name="handler" value="CancelScheduling">
 	                                                    <input type="hidden" name="id" value="${s.id}">
 	                                                    <input type="hidden" name="date" value="${s.date}">
-	                                                    <button type="submit" class="cancel-btn" 
-	                                                            onclick="return confirm('Tem certeza que deseja cancelar este agendamento?')">
+	                                                    <button type="submit" class="cancel-btn" onclick="return confirm('Tem certeza que deseja cancelar este agendamento?')">
 	                                                        ❌ Cancelar Agendamento
 	                                                    </button>
 	                                                </form>

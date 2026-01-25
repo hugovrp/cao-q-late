@@ -1,1 +1,75 @@
 @charset "UTF-8";
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #2A9D8F 0%, #264653 100%);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.error-container {
+    padding: 20px;
+    width: 100%;
+    max-width: 500px;
+}
+
+.error-card {
+    background: white;
+    padding: 50px 30px;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+.dog-icon {
+    font-size: 5em;
+    margin-bottom: 20px;
+    animation: wiggle 2s infinite;
+    display: inline-block;
+}
+
+h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 4em;
+    color: #2A9D8F;
+    margin: 0;
+    line-height: 1;
+}
+
+h2 {
+    font-family: 'Poppins', sans-serif;
+    color: #264653;
+    margin: 15px 0;
+}
+
+p {
+    color: #666;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.back-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, #2A9D8F, #1a7d71);
+    color: white;
+    text-decoration: none;
+    padding: 15px 30px;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(42, 157, 143, 0.3);
+}
+
+.back-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(42, 157, 143, 0.4);
+}
+
+@keyframes wiggle {
+    0%, 100% { transform: rotate(-5deg); }
+    50% { transform: rotate(5deg); }
+}

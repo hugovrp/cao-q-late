@@ -59,7 +59,7 @@ public class PetShopController extends HttpServlet {
 			url = handler.service(request, response);
 			
 		} catch (ClassNotFoundException | IllegalAccessException | InstantiationException e) {
-			e.printStackTrace();
+			url = "404.jsp";
 		}
 		
 		// Encaminha a requisição para a página JSP apropriada

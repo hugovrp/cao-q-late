@@ -77,7 +77,6 @@ public class RegisterScheduling implements Handler {
             return "scheduling_home.jsp";
         }
 
-        // Cria o objeto Scheduling
         Scheduling scheduling = new Scheduling();
         scheduling.setStatus("Agendado");
 
@@ -103,8 +102,6 @@ public class RegisterScheduling implements Handler {
             }
         }
         scheduling.setServicesList(services);
-
-        // Persiste o agendamento no banco de dados
         boolean success = dao.register_scheduling(scheduling);
         
         // Define mensagem de sucesso ou erro

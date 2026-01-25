@@ -123,9 +123,10 @@ public class SchedulingDAO {
 	 * @return boolean true se a data está livre, false se já existe agendamento
 	 */
 	public boolean is_date_available(int dog_id, Date date) {
-	    String sql = "select count(*) from scheduling where date=?";
+		String sql = "select count(*) from scheduling where date=? and dog=?";
 	    try(PreparedStatement stmt = connection.prepareStatement(sql)) {
 	        stmt.setDate(1, date);
+	        stmt.setInt(2, dog_id);
 	        ResultSet rs = stmt.executeQuery();
 	        if(rs.next()) {
 	            return rs.getInt(1) == 0; // true se não há nenhum agendamento nesta data
@@ -250,5 +251,62 @@ public class SchedulingDAO {
 		}
 		
 		return schedulings;
+	}
+	
+	/**
+	 * Lista todos os agendamentos para hoje cadastrados no sistema.
+	 * 
+	 * @return List<Scheduling> lista contendo todos os agendamentos para hoje cadastrados, lista vazia se nenhum encontrado
+	 */
+	public List<Scheduling> schedulings_today() {
+	    List<Scheduling> today = new ArrayList<Scheduling>();
+	    // SQL melhorado para trazer o nome do cão
+	    String cmd_sql = "select sc.*, d.name as dog_name from scheduling sc " +
+	                     "join dog d on d.id = sc.dog " +
+	                     "where sc.date = CURRENT_DATE and sc.status = 'Agendado'";
+	    
+	    try(PreparedStatement statement = connection.prepareStatement(cmd_sql)) {
+	        ResultSet result = statement.executeQuery();
+	        while(result.next()) {
+	            Scheduling scheduling = new Scheduling();
+	            scheduling.setId(result.getInt("id"));
+	            scheduling.setStatus(result.getString("status"));
+	            
+	            Dog dog = new Dog();
+	            dog.setName(result.getString("dog_name"));
+	            scheduling.setDog(dog);
+	            
+	            // Busca os serviços deste agendamento específico
+	            scheduling.setServicesList(this.list_by_scheduling(scheduling.getId())); 
+	            
+	            today.add(scheduling);
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	    return today;
+	}
+	
+	/**
+	 * Lista todos os agendamentos finalizados no sistema.
+	 * 
+	 * @return List<Scheduling> lista contendo todos os agendamentos finalizados, lista vazia se nenhum encontrado
+	 */
+	public List<Scheduling> finished_list() {
+		List<Scheduling> finished = new ArrayList<Scheduling>();
+		String cmd_sql = "select * from scheduling where status = 'Finalizado'";
+		
+		try(PreparedStatement statement = connection.prepareStatement(cmd_sql)) {
+			ResultSet result = statement.executeQuery();
+			while(result.next()) {
+				Scheduling scheduling = new Scheduling();
+				scheduling.setId(result.getInt("id"));
+				
+				finished.add(scheduling);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return finished;
 	}
 }

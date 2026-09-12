@@ -1,15 +1,6 @@
 # 🐕 Cão Q-Late - Sistema de Gerenciamento para Petshop
 
-> Sistema web desenvolvido em Java para gestão completa de petshops, incluindo cadastro de clientes, pets, agendamentos e controle financeiro.
-
-[![Java](https://img.shields.io/badge/Java-24-orange?style=for-the-badge&logo=openjdk)](https://openjdk.org/)
-[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-42.7.7-blue?style=for-the-badge&logo=postgresql)](https://www.postgresql.org/)
-[![Apache Tomcat](https://img.shields.io/badge/Tomcat-10.1-yellow?style=for-the-badge&logo=apachetomcat)](https://tomcat.apache.org/)
-[![Maven](https://img.shields.io/badge/Maven-3.x-red?style=for-the-badge&logo=apachemaven)](https://maven.apache.org/)
-
----
-
-## 📋 Sobre o Projeto
+Sistema web desenvolvido em Java para gestão completa de petshops, incluindo cadastro de clientes, pets, agendamentos e controle financeiro.
 
 **Cão Q-Late** é um sistema completo de gerenciamento para petshops que permite:
 
@@ -24,50 +15,50 @@
 > **Curso**: Sistemas para Internet  
 > **Tipo**: Trabalho Individual 
 
----
+<br>
 
-## 🚀 Tecnologias
+## 🔍 Prévia
 
-### Backend
+<img src="/readme-img/home.jpg" width="800" alt="Página exemplo1">
+
+<img src="/img/readme-imgs/readme-img2.png" width="800" alt="Página exemplo1">
+
+<br>
+
+## 🌐 Tecnologias
+
 - **Java 21** - Linguagem principal
 - **Jakarta Servlet/JSP** - Framework web
 - **JSTL** - Template engine
 - **Maven** - Gerenciamento de dependências
-
-### Banco de Dados
 - **PostgreSQL 42.7.7** - Banco de dados relacional
 - **JDBC** - Conectividade com banco
-
-### Servidor
 - **Apache Tomcat 10.1** - Container de servlets
-
-### Frontend
 - **HTML5 + CSS3** - Interface moderna e responsiva
 - **JavaScript (ES6+)** - Validações e interatividade
 - **SHA-256** - Hash de senhas no frontend
-
-### DevOps
 - **Docker e Docker Compose** - Imagens personalizadas e orquestração via Docker Compose.
 
----
+<br>
 
 ## 📦 Pré-requisitos
 
-- [JDK 24+](https://openjdk.org/projects/jdk/24/)
-- [Apache Tomcat 10.1+](https://tomcat.apache.org/download-10.cgi)
-- [PostgreSQL 12+](https://www.postgresql.org/download/)
-- [Maven 3.x](https://maven.apache.org/download.cgi)
+- JDK 24+
+- Apache Tomcat 10.1+
+- PostgreSQL 12+
+- Maven 3.x
 
----
+<br>
 
-## 🔐 Credenciais de Acesso
+## ✨ Funcionalidades
 
-**Login:** `admin`  
-**Senha:** `admin`
+- 🔒 **Sistema de Login**: Hash de senhas no frontend com Web Crypto API
+- 🎯 **Dashboard intuitivo** Acesso rápido às principais funcionalidades
+- 📝 **Validação de formulários** Verificação de dados em tempo real no frontend
+- 🛡️ **Transações ACID** Segurança e integridade em operações críticas
+- 📱 **Design Responsivo** Funciona perfeitamente em todos os dispositivos
 
-> ⚠️ A senha é hasheada com SHA-256 no frontend antes do envio. Hash armazenado: `8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918`
-
----
+<br>
 
 ## 💻 Arquitetura do Sistema
 
@@ -86,10 +77,32 @@
                      └──────────────┘
 ```
 
-## 🎯 Funcionalidades Principais
+<br>
 
-### 1. Sistema de Login
-Hash de senha no frontend usando Web Crypto API:
+## 🔐 Credenciais de Acesso
+
+**Login:** `admin`  
+**Senha:** `admin`
+
+> ⚠️ A senha é hasheada com SHA-256 no frontend antes do envio. Hash armazenado: `8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918`
+
+<br>
+
+## 📊 Regras de Negócio
+
+1. **Único Administrador**: Sistema permite apenas um usuário admin
+2. **Validação de Propriedade**: Apenas o dono pode agendar serviços para seu cão
+3. **Desconto Automático**: 10% de desconto em 3+ serviços na mesma prestação
+4. **Status de Agendamento**: `Agendado` → `Finalizado` ou `Cancelado`
+5. **Histórico Completo**: Todos os serviços prestados são mantidos no histórico
+
+<br>
+
+## 🛠️ Destaques Técnicos
+
+### 🔒 Hash de Senhas com Web Crypto API
+
+As senhas são protegidas no frontend utilizando SHA-256 antes do envio ao servidor.
 
 ```javascript
 async function hashPassword(password) {
@@ -101,26 +114,9 @@ async function hashPassword(password) {
 }
 ```
 
-### 2. Cadastro de Clientes e Cães
-O sistema permite cadastro integrado - ao cadastrar um cliente, seus cães podem ser registrados simultaneamente:
+### 📅 Validação de Agendamentos
 
-```java
-public boolean register_client(Client client) {
-    // Insere cliente
-    // Se cliente possui cães, cadastra automaticamente
-    if(client.getDogList() != null && !client.getDogList().isEmpty()) {
-        DogDAO dog_dao = new DogDAO();
-        for(Dog dog : client.getDogList()) {
-            dog.setOwner(client);
-            dog_dao.register_dog(dog);
-        }
-    }
-    return true;
-}
-```
-
-### 3. Sistema de Agendamentos
-Validações automáticas de disponibilidade:
+Verificação de disponibilidade e validação de propriedade do animal antes da criação do agendamento.
 
 ```java
 // Verifica se o cão pertence ao cliente
@@ -133,29 +129,16 @@ public boolean is_date_available(int dog_id, Date date)
 public boolean register_scheduling(Scheduling scheduling)
 ```
 
-### 4. Prestação de Serviços com Desconto Automático
+### 💰 Desconto Automático
 
-O sistema aplica **10% de desconto** automaticamente quando 3 ou mais serviços são realizados:
+Aplicação automática de 10% de desconto quando três ou mais serviços são realizados na mesma prestação.
 
 ```java
-public ServiceProvision register_provision(int scheduling_id) {
-    // Busca serviços do agendamento
-    List<Service> services = dao.list_by_scheduling(scheduling_id);
-    
-    // Calcula total
-    float total = services.stream()
-        .map(Service::getPrice)
-        .reduce(0f, Float::sum);
-    
-    // Aplica desconto
-    boolean hasDiscount = services.size() >= 3;
-    float amountCharged = hasDiscount ? total * 0.9f : total;
-    
-    // Registra prestação e atualiza agendamento para "Finalizado"
-}
+boolean hasDiscount = services.size() >= 3;
+float amountCharged = hasDiscount ? total * 0.9f : total;
 ```
 
-### 5. Relatórios Financeiros
+### 📊 Relatórios Financeiros
 
 ```java
 // Relatório de prestações em período
@@ -164,62 +147,3 @@ public List<ServiceProvision> provision_report(Date startDate, Date endDate)
 // Cálculo de receita total
 public float calculate_total_revenue(Date startDate, Date endDate)
 ```
-
----
-
-## 🎨 Interface do Usuário
-
-O sistema possui uma interface moderna e responsiva com:
-
-- 🎨 **Design System** personalizado com paleta de cores Teal (#2A9D8F) e Dark Blue (#264653)
-- 📱 **Layout Responsivo** que se adapta a mobile, tablet e desktop
-- ✨ **Animações suaves** em hover e transições
-- 🔍 **Busca em tempo real** nas listagens
-- ✅ **Validação de formulários** no frontend
-- 🎯 **Dashboard intuitivo** com acesso rápido às funcionalidades
-
----
-
-## 🔒 Segurança
-
-- ✅ Hash SHA-256 de senhas no frontend
-- ✅ Prepared Statements (proteção contra SQL Injection)
-- ✅ Validação de permissões (apenas um admin)
-- ✅ Validação de relacionamentos (cão pertence ao cliente)
-- ✅ Transações ACID para operações críticas
-
----
-
-## 📊 Regras de Negócio
-
-1. **Único Administrador**: Sistema permite apenas um usuário admin
-2. **Validação de Propriedade**: Apenas o dono pode agendar serviços para seu cão
-3. **Desconto Automático**: 10% de desconto em 3+ serviços na mesma prestação
-4. **Status de Agendamento**: `Agendado` → `Finalizado` ou `Cancelado`
-5. **Histórico Completo**: Todos os serviços prestados são mantidos no histórico
-
----
-
-## 🤝 Contribuindo
-
-Contribuições são bem-vindas! Para contribuir:
-
-1. Fork o projeto
-2. Crie uma branch (`git checkout -b feature/MinhaFeature`)
-3. Commit suas mudanças (`git commit -m 'Adiciona nova feature'`)
-4. Push para a branch (`git push origin feature/MinhaFeature`)
-5. Abra um Pull Request
-
----
-
-## 📝 Licença
-
-Este projeto é um trabalho acadêmico desenvolvido para a disciplina de **Desenvolvimento de Aplicações Web** do curso de **Sistemas para Internet**.
-
----
-
-## 👨‍💻 Autor
-
-**Hugo Vinícius Rodrigues Pereira**
-
-[![GitHub](https://img.shields.io/badge/GitHub-hugovrp-black?style=flat-square&logo=github)](https://github.com/hugovrp)

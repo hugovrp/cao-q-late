@@ -21,7 +21,9 @@ Sistema web desenvolvido em Java para gestão completa de petshops, incluindo ca
 
 <img src="/readme-img/home.jpg" width="800" alt="Página exemplo1">
 
-<img src="/img/readme-imgs/readme-img2.png" width="800" alt="Página exemplo1">
+<img src="/readme-img/dashboard.jpg" width="800" alt="Página exemplo2">
+
+<img src="/readme-img/report.jpg" width="800" alt="Página exemplo3">
 
 <br>
 
